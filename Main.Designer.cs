@@ -40,7 +40,7 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.log_msgbox = new System.Windows.Forms.RichTextBox();
-            this.but_analyze = new System.Windows.Forms.Button();
+            this.but_analyse = new System.Windows.Forms.Button();
             this.but_clean = new System.Windows.Forms.Button();
             this.but_log_clean = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -110,7 +110,7 @@
             // resetToolStripMenuItem
             // 
             this.resetToolStripMenuItem.Name = "resetToolStripMenuItem";
-            this.resetToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.resetToolStripMenuItem.Size = new System.Drawing.Size(102, 22);
             this.resetToolStripMenuItem.Text = "&Reset";
             this.resetToolStripMenuItem.Click += new System.EventHandler(this.resetToolStripMenuItem_Click);
             // 
@@ -138,15 +138,15 @@
             this.log_msgbox.TabIndex = 1;
             this.log_msgbox.Text = "";
             // 
-            // but_analyze
+            // but_analyse
             // 
-            this.but_analyze.Location = new System.Drawing.Point(13, 313);
-            this.but_analyze.Name = "but_analyze";
-            this.but_analyze.Size = new System.Drawing.Size(98, 86);
-            this.but_analyze.TabIndex = 2;
-            this.but_analyze.Text = "Analyze";
-            this.but_analyze.UseVisualStyleBackColor = true;
-            this.but_analyze.Click += new System.EventHandler(this.but_analyze_Click);
+            this.but_analyse.Location = new System.Drawing.Point(13, 313);
+            this.but_analyse.Name = "but_analyse";
+            this.but_analyse.Size = new System.Drawing.Size(98, 86);
+            this.but_analyse.TabIndex = 2;
+            this.but_analyse.Text = "Analyse";
+            this.but_analyse.UseVisualStyleBackColor = true;
+            this.but_analyse.Click += new System.EventHandler(this.but_analyze_Click);
             // 
             // but_clean
             // 
@@ -206,7 +206,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.but_log_clean);
             this.Controls.Add(this.but_clean);
-            this.Controls.Add(this.but_analyze);
+            this.Controls.Add(this.but_analyse);
             this.Controls.Add(this.log_msgbox);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -231,7 +231,7 @@
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.RichTextBox log_msgbox;
-        private System.Windows.Forms.Button but_analyze;
+        private System.Windows.Forms.Button but_analyse;
         private System.Windows.Forms.Button but_clean;
         private System.Windows.Forms.Button but_log_clean;
         private System.Windows.Forms.Label label1;

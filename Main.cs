@@ -254,7 +254,7 @@ namespace RAM_Cleaner_2
         {
             if (hoggers_ID.Count == 0)
             {
-                log_msgbox.Text += "No process to kill, please analyze first.\n";
+                log_msgbox.Text += "No process to kill, please analyse first.\n";
                 return;
             }
             foreach (int tmp in hoggers_ID)
