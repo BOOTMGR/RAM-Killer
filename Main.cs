@@ -49,6 +49,11 @@ namespace RAM_Cleaner_2
         public Main()
         {
             InitializeComponent();
+            /* 
+             * check for privileges on start up because Windows 7 & later versions
+             * requires Administrator priveleges to kill some processes started
+             * by autorun
+             */
             WindowsIdentity identity = WindowsIdentity.GetCurrent();
             WindowsPrincipal principal = new WindowsPrincipal(identity);
             if (!principal.IsInRole(WindowsBuiltInRole.Administrator))
