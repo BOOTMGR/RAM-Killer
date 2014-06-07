@@ -192,9 +192,8 @@
             this.mem_status_free.AutoSize = true;
             this.mem_status_free.Location = new System.Drawing.Point(221, 328);
             this.mem_status_free.Name = "mem_status_free";
-            this.mem_status_free.Size = new System.Drawing.Size(27, 13);
+            this.mem_status_free.Size = new System.Drawing.Size(0, 13);
             this.mem_status_free.TabIndex = 7;
-            this.mem_status_free.Text = "ssss";
             this.mem_status_free.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Main
