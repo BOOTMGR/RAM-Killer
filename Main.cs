@@ -255,5 +255,22 @@ namespace RAM_Cleaner_2
         {
             flushCounters(true);
         }
+
+        private void saveLogToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveLog.InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            saveLog.FileName = "log.txt";
+            saveLog.Filter = "Text Files|*.txt|All Files|*.";
+            if (saveLog.ShowDialog() != DialogResult.Cancel)
+            {
+                string path = saveLog.FileName;
+                log_msgbox.SaveFile(path, RichTextBoxStreamType.PlainText);
+            }
+        }
+
+        private void clearLogToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            log_msgbox.Clear();
+        }
     }
 }
