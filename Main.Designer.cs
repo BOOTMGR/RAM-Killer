@@ -46,6 +46,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.saveLog = new System.Windows.Forms.SaveFileDialog();
             this.mem_status = new System.Windows.Forms.Label();
+            this.mem_status_free = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -186,11 +187,22 @@
             this.mem_status.TabIndex = 6;
             this.mem_status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // mem_status_free
+            // 
+            this.mem_status_free.AutoSize = true;
+            this.mem_status_free.Location = new System.Drawing.Point(221, 328);
+            this.mem_status_free.Name = "mem_status_free";
+            this.mem_status_free.Size = new System.Drawing.Size(27, 13);
+            this.mem_status_free.TabIndex = 7;
+            this.mem_status_free.Text = "ssss";
+            this.mem_status_free.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(491, 411);
+            this.Controls.Add(this.mem_status_free);
             this.Controls.Add(this.mem_status);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.but_log_clean);
@@ -204,6 +216,7 @@
             this.MaximizeBox = false;
             this.Name = "Main";
             this.Text = "RAM Cleaner";
+            this.Load += new System.EventHandler(this.Main_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -230,6 +243,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.SaveFileDialog saveLog;
         private System.Windows.Forms.Label mem_status;
+        private System.Windows.Forms.Label mem_status_free;
     }
 }
 

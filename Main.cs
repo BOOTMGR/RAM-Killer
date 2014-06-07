@@ -69,7 +69,7 @@ namespace RAM_Cleaner_2
             WindowsPrincipal principal = new WindowsPrincipal(identity);
             if (!principal.IsInRole(WindowsBuiltInRole.Administrator))
                 MessageBox.Show("You are not running this tool as Administrator, so this application may not be able to kill some prcesses. For best experience please run this tool as Administrator", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            estimate();
+            estimate(true);
             printHoggers();
 
             // called once so that system info can be displayed at start up
@@ -100,9 +100,11 @@ namespace RAM_Cleaner_2
         }
 
         // search and add victim processes into list
-        private void estimate()
+        private void estimate(bool print)
         {
-            log_msgbox.Text += "Resource Hogging services Running:\n";
+            flushCounters(true);
+            if(print)
+                log_msgbox.Text += "Resource Hogging services Running:\n";
             Process[] p = Process.GetProcesses();
             foreach (Process tmp in p)
             {
@@ -244,8 +246,7 @@ namespace RAM_Cleaner_2
 
         private void but_analyze_Click(object sender, EventArgs e)
         {
-            flushCounters(true);
-            estimate();
+            estimate(true);
             printHoggers();
         }
 
@@ -310,10 +311,18 @@ namespace RAM_Cleaner_2
             {
                 if (mem_status.InvokeRequired)
                 {
-                    mem_status.Invoke(new MethodInvoker(delegate { mem_status.Text = "Physical Memory: " + mem_phy_avail + "/" + mem_phy_total; }));
+                    mem_status.Invoke(new MethodInvoker(delegate { mem_status.Text = "Physical Memory: " + mem_phy_avail + "/" + mem_phy_total + " MB"; }));
                 }
                 else
-                    mem_status.Text = "Physical Memory: " + mem_phy_avail + "/" + mem_phy_total;
+                    mem_status.Text = "Physical Memory: " + mem_phy_avail + "/" + mem_phy_total + " MB";
+            }
+            estimate(false);
+            lock (mem_status_free)
+            {
+                if (mem_status_free.InvokeRequired)
+                    mem_status_free.Invoke(new MethodInvoker(delegate { mem_status_free.Text = "Memory can be freed: " + Math.Round(mem_est / 1024 / 1024, 2) + " MB"; }));
+                else
+                    mem_status_free.Text = "Memory can be freed: " + Math.Round(mem_est/ 1024 /1024, 2) + " MB";
             }
         }
 
@@ -324,6 +333,11 @@ namespace RAM_Cleaner_2
                 updateStatus();
                 Thread.Sleep(500);
             }
+        }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
