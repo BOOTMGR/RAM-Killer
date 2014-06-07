@@ -31,6 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clearLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.advancedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.resetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,9 +45,7 @@
             this.but_log_clean = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.saveLog = new System.Windows.Forms.SaveFileDialog();
-            this.saveLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.clearLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.mem_status = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,10 +72,29 @@
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "&File";
             // 
+            // saveLogToolStripMenuItem
+            // 
+            this.saveLogToolStripMenuItem.Name = "saveLogToolStripMenuItem";
+            this.saveLogToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.saveLogToolStripMenuItem.Text = "&Save Log";
+            this.saveLogToolStripMenuItem.Click += new System.EventHandler(this.saveLogToolStripMenuItem_Click);
+            // 
+            // clearLogToolStripMenuItem
+            // 
+            this.clearLogToolStripMenuItem.Name = "clearLogToolStripMenuItem";
+            this.clearLogToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.clearLogToolStripMenuItem.Text = "&Clear Log";
+            this.clearLogToolStripMenuItem.Click += new System.EventHandler(this.clearLogToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(121, 6);
+            // 
             // quitToolStripMenuItem
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.quitToolStripMenuItem.Text = "&Quit";
             this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
             // 
@@ -104,7 +124,7 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "&About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -157,30 +177,21 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Copyright  2014-2020 Harsh Panchal";
             // 
-            // saveLogToolStripMenuItem
+            // mem_status
             // 
-            this.saveLogToolStripMenuItem.Name = "saveLogToolStripMenuItem";
-            this.saveLogToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.saveLogToolStripMenuItem.Text = "&Save Log";
-            this.saveLogToolStripMenuItem.Click += new System.EventHandler(this.saveLogToolStripMenuItem_Click);
-            // 
-            // clearLogToolStripMenuItem
-            // 
-            this.clearLogToolStripMenuItem.Name = "clearLogToolStripMenuItem";
-            this.clearLogToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.clearLogToolStripMenuItem.Text = "&Clear Log";
-            this.clearLogToolStripMenuItem.Click += new System.EventHandler(this.clearLogToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.mem_status.AutoSize = true;
+            this.mem_status.Location = new System.Drawing.Point(221, 313);
+            this.mem_status.Name = "mem_status";
+            this.mem_status.Size = new System.Drawing.Size(0, 13);
+            this.mem_status.TabIndex = 6;
+            this.mem_status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(491, 411);
+            this.Controls.Add(this.mem_status);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.but_log_clean);
             this.Controls.Add(this.but_clean);
@@ -218,6 +229,7 @@
         private System.Windows.Forms.ToolStripMenuItem clearLogToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.SaveFileDialog saveLog;
+        private System.Windows.Forms.Label mem_status;
     }
 }
 

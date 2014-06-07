@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Security.Principal;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -46,6 +47,16 @@ namespace RAM_Cleaner_2
         // stores all PIDs to be killed
         List<int> hoggers_ID = new List<int>();
 
+        // Store some info about system
+        static Microsoft.VisualBasic.Devices.ComputerInfo MyInfo = new Microsoft.VisualBasic.Devices.ComputerInfo();
+
+        // total available & free physical memory
+        private static int mem_phy_total = 0;
+        private static int mem_phy_avail = 0;
+
+        // Thread updating status
+        private Thread updater;
+
         public Main()
         {
             InitializeComponent();
@@ -60,6 +71,21 @@ namespace RAM_Cleaner_2
                 MessageBox.Show("You are not running this tool as Administrator, so this application may not be able to kill some prcesses. For best experience please run this tool as Administrator", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
             estimate();
             printHoggers();
+
+            // called once so that system info can be displayed at start up
+            updateStatus();
+
+            // now start a thread to keep it updating
+            updater = new Thread(updaterThreadFunction);
+            updater.Start();
+        }
+
+        // override OnFormClosing event for stopping updater thread
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            if(updater != null)
+                updater.Abort();
+            base.OnFormClosing(e);
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -239,7 +265,7 @@ namespace RAM_Cleaner_2
                 }
                 catch (Exception ex)
                 {
-                    log_msgbox.Text += "\nError: " + ex + "\n\nAre you ADMIN?\n";
+                    log_msgbox.Text += "\nError: " + ex + "\n\nAre you Administrator?\n";
                     return;
                 }
                 mem_freed += (p.WorkingSet64 + p.VirtualMemorySize64);
@@ -249,6 +275,9 @@ namespace RAM_Cleaner_2
                 log_msgbox.Text += "\nMemory cleaned: " + Math.Round(inter / 1024, 2) + " GB\n";
             else
                 log_msgbox.Text += "\nMemory cleaned: " + Math.Round(inter, 2) + " MB\n";
+
+            // update status
+            updateStatus();
         }
 
         private void resetToolStripMenuItem_Click(object sender, EventArgs e)
@@ -271,6 +300,30 @@ namespace RAM_Cleaner_2
         private void clearLogToolStripMenuItem_Click(object sender, EventArgs e)
         {
             log_msgbox.Clear();
+        }
+
+        private void updateStatus()
+        {
+            mem_phy_total = (int)(MyInfo.TotalPhysicalMemory / 1024 / 1024);
+            mem_phy_avail = (int)(MyInfo.AvailablePhysicalMemory / 1024 / 1024);
+            lock (mem_status)
+            {
+                if (mem_status.InvokeRequired)
+                {
+                    mem_status.Invoke(new MethodInvoker(delegate { mem_status.Text = "Physical Memory: " + mem_phy_avail + "/" + mem_phy_total; }));
+                }
+                else
+                    mem_status.Text = "Physical Memory: " + mem_phy_avail + "/" + mem_phy_total;
+            }
+        }
+
+        private void updaterThreadFunction()
+        {
+            while (true)
+            {
+                updateStatus();
+                Thread.Sleep(500);
+            }
         }
     }
 }
