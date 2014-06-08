@@ -280,9 +280,6 @@ namespace RAM_Cleaner_2
                 log_msgbox.Text += "\nMemory cleaned: " + Math.Round(inter / 1024, 2) + " GB\n";
             else
                 log_msgbox.Text += "\nMemory cleaned: " + Math.Round(inter, 2) + " MB\n";
-
-            // update status
-            updateStatus();
         }
 
         private void resetToolStripMenuItem_Click(object sender, EventArgs e)
