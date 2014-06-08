@@ -77,6 +77,7 @@ namespace RAM_Cleaner_2
 
             // now start a thread to keep it updating
             updater = new Thread(updaterThreadFunction);
+            updater.Name = "BackGroundUpdater";
             updater.Start();
         }
 
