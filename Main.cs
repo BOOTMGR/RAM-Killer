@@ -311,33 +311,15 @@ namespace RAM_Cleaner_2
         {
             mem_phy_total = (int)(MyInfo.TotalPhysicalMemory / 1024 / 1024);
             mem_phy_avail = (int)(MyInfo.AvailablePhysicalMemory / 1024 / 1024);
-            lock (mem_status)
-            {
-                try
-                {
-                    if (mem_status.InvokeRequired)
-                    {
-                        mem_status.Invoke(new MethodInvoker(delegate { mem_status.Text = "Physical Memory: " + mem_phy_avail + "/" + mem_phy_total + " MB"; }));
-                    }
-                    else
-                        mem_status.Text = "Physical Memory: " + mem_phy_avail + "/" + mem_phy_total + " MB";
-                }
-                catch (Exception ex)
-                { }
-            }
+            if (mem_status.InvokeRequired)
+                mem_status.Invoke(new MethodInvoker(delegate { mem_status.Text = "Physical Memory: " + mem_phy_avail + "/" + mem_phy_total + " MB"; }));
+            else
+                mem_status.Text = "Physical Memory: " + mem_phy_avail + "/" + mem_phy_total + " MB";
             estimate(false);
-            lock (mem_status_free)
-            {
-                try
-                {
-                    if (mem_status_free.InvokeRequired)
-                        mem_status_free.Invoke(new MethodInvoker(delegate { mem_status_free.Text = "Memory can be freed: " + Math.Round(mem_est / 1024 / 1024, 2) + " MB"; }));
-                    else
-                        mem_status_free.Text = "Memory can be freed: " + Math.Round(mem_est / 1024 / 1024, 2) + " MB";
-                }
-                catch (Exception ex)
-                { }
-            }
+            if (mem_status_free.InvokeRequired)
+                mem_status_free.Invoke(new MethodInvoker(delegate { mem_status_free.Text = "Memory can be freed: " + Math.Round(mem_est / 1024 / 1024, 2) + " MB"; }));
+            else
+                mem_status_free.Text = "Memory can be freed: " + Math.Round(mem_est / 1024 / 1024, 2) + " MB";
         }
 
         private void updaterThreadFunction()
