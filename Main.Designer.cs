@@ -47,6 +47,7 @@
             this.saveLog = new System.Windows.Forms.SaveFileDialog();
             this.mem_status = new System.Windows.Forms.Label();
             this.mem_status_free = new System.Windows.Forms.Label();
+            this.but_top_hoggers = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,32 +71,32 @@
             this.toolStripSeparator1,
             this.quitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(35, 20);
             this.fileToolStripMenuItem.Text = "&File";
             // 
             // saveLogToolStripMenuItem
             // 
             this.saveLogToolStripMenuItem.Name = "saveLogToolStripMenuItem";
-            this.saveLogToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.saveLogToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.saveLogToolStripMenuItem.Text = "&Save Log";
             this.saveLogToolStripMenuItem.Click += new System.EventHandler(this.saveLogToolStripMenuItem_Click);
             // 
             // clearLogToolStripMenuItem
             // 
             this.clearLogToolStripMenuItem.Name = "clearLogToolStripMenuItem";
-            this.clearLogToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.clearLogToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.clearLogToolStripMenuItem.Text = "&Clear Log";
             this.clearLogToolStripMenuItem.Click += new System.EventHandler(this.clearLogToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(121, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(116, 6);
             // 
             // quitToolStripMenuItem
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.quitToolStripMenuItem.Text = "&Quit";
             this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
             // 
@@ -104,7 +105,7 @@
             this.advancedToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.resetToolStripMenuItem});
             this.advancedToolStripMenuItem.Name = "advancedToolStripMenuItem";
-            this.advancedToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
+            this.advancedToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
             this.advancedToolStripMenuItem.Text = "&Advanced";
             // 
             // resetToolStripMenuItem
@@ -119,13 +120,13 @@
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
             this.helpToolStripMenuItem.Text = "&Help";
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.aboutToolStripMenuItem.Text = "&About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -142,7 +143,7 @@
             // 
             this.but_analyse.Location = new System.Drawing.Point(13, 313);
             this.but_analyse.Name = "but_analyse";
-            this.but_analyse.Size = new System.Drawing.Size(98, 86);
+            this.but_analyse.Size = new System.Drawing.Size(98, 42);
             this.but_analyse.TabIndex = 2;
             this.but_analyse.Text = "Analyse";
             this.but_analyse.UseVisualStyleBackColor = true;
@@ -196,11 +197,22 @@
             this.mem_status_free.TabIndex = 7;
             this.mem_status_free.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // but_top_hoggers
+            // 
+            this.but_top_hoggers.Location = new System.Drawing.Point(13, 361);
+            this.but_top_hoggers.Name = "but_top_hoggers";
+            this.but_top_hoggers.Size = new System.Drawing.Size(98, 38);
+            this.but_top_hoggers.TabIndex = 8;
+            this.but_top_hoggers.Text = "Top Hoggers";
+            this.but_top_hoggers.UseVisualStyleBackColor = true;
+            this.but_top_hoggers.Click += new System.EventHandler(this.but_top_hoggers_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(491, 411);
+            this.Controls.Add(this.but_top_hoggers);
             this.Controls.Add(this.mem_status_free);
             this.Controls.Add(this.mem_status);
             this.Controls.Add(this.label1);
@@ -243,6 +255,7 @@
         private System.Windows.Forms.SaveFileDialog saveLog;
         private System.Windows.Forms.Label mem_status;
         private System.Windows.Forms.Label mem_status_free;
+        private System.Windows.Forms.Button but_top_hoggers;
     }
 }
 

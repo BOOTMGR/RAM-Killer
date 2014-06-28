@@ -332,5 +332,10 @@ namespace RAM_Cleaner_2
         {
 
         }
+
+        private void but_top_hoggers_Click(object sender, EventArgs e)
+        {
+            new TopHoggers().Show();
+        }
     }
 }
