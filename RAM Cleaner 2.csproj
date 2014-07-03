@@ -81,7 +81,9 @@
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
-    <Compile Include="ProgressBarEx.cs" />
+    <Compile Include="ProgressBarEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TopHoggers.cs">
       <SubType>Form</SubType>

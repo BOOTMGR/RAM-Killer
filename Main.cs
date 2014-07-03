@@ -69,8 +69,7 @@ namespace RAM_Cleaner_2
             WindowsPrincipal principal = new WindowsPrincipal(identity);
             if (!principal.IsInRole(WindowsBuiltInRole.Administrator))
                 MessageBox.Show("You are not running this tool as Administrator, so this application may not be able to kill some prcesses. For best experience please run this tool as Administrator", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            estimate(true);
-            printHoggers();
+            estimate();
 
             // called once so that system info can be displayed at start up
             updateStatus();
@@ -101,11 +100,9 @@ namespace RAM_Cleaner_2
         }
 
         // search and add victim processes into list
-        private void estimate(bool print)
+        private void estimate()
         {
             flushCounters(true);
-            if(print)
-                log_msgbox.Text += "Resource Hogging services Running:\n";
             Process[] p = Process.GetProcesses();
             foreach (Process tmp in p)
             {
@@ -175,46 +172,33 @@ namespace RAM_Cleaner_2
            }
         }
 
-        private void printHoggers()
+        private void printHoggersEx()
         {
-            if (DEBUG)
+            listBox1.Items.Clear();
+            if (hoggers.Count != 0)
             {
-                foreach (int x in hoggers_ID)
+                foreach (int tmp in hoggers)
                 {
-                    log_msgbox.Text += DEBUG_TAG + "PID: " + x + "\n";
+                    switch (tmp)
+                    {
+                        case 1001:
+                            listBox1.Items.Add("BlueStacks");
+                            break;
+                        case 1002:
+                            listBox1.Items.Add("Adobe Reader");
+                            break;
+                        case 1003:
+                            listBox1.Items.Add("Kies");
+                            break;
+                        case 1004:
+                            listBox1.Items.Add("APS Daemon");
+                            break;
+                        case 1005:
+                            listBox1.Items.Add("QuickTime Services");
+                            break;
+                    }
                 }
             }
-            if (hoggers.Count == 0)
-            {
-                log_msgbox.Text += "\t(none)\n";
-                return;
-            }
-            foreach (int tmp in hoggers)
-            {
-                switch (tmp)
-                {
-                    case 1001:
-                        log_msgbox.Text += "\tBluestacks (" + BSinstance + ")\n";
-                        break;
-                    case 1002:
-                        log_msgbox.Text += "\tAdobe Reader (" + AdobeReaederinstance + ")\n";
-                        break;
-                    case 1003:
-                        log_msgbox.Text += "\tKies (" + Kiesinstance + ")\n";
-                        break;
-                    case 1004:
-                        log_msgbox.Text += "\tAPS Daemon(" + APSinstance + ")\n";
-                        break;
-                    case 1005:
-                        log_msgbox.Text += "\tQuickTime Services(" + QTTaskinstance + ")\n";
-                        break;
-                }
-            }
-            double inter = mem_est / 1024 / 1024;
-            if(inter >= 1024)
-                log_msgbox.Text += "\nMemory can be cleaned: " + Math.Round(inter / 1024, 2) + " GB\n";
-            else
-                log_msgbox.Text += "\nMemory can be cleaned: " + Math.Round(inter, 2) + " MB\n";
         }
 
         private void flushCounters(bool clearList)
@@ -247,8 +231,7 @@ namespace RAM_Cleaner_2
 
         private void but_analyze_Click(object sender, EventArgs e)
         {
-            estimate(true);
-            printHoggers();
+            estimate();
         }
 
         private void but_clean_Click(object sender, EventArgs e)
@@ -277,9 +260,9 @@ namespace RAM_Cleaner_2
             }
             double inter = mem_freed / 1024 / 1024;
             if (inter >= 1024)
-                log_msgbox.Text += "\nMemory cleaned: " + Math.Round(inter / 1024, 2) + " GB\n";
+                log_msgbox.Text += "Memory cleaned: " + Math.Round(inter / 1024, 2) + " GB\n";
             else
-                log_msgbox.Text += "\nMemory cleaned: " + Math.Round(inter, 2) + " MB\n";
+                log_msgbox.Text += "Memory cleaned: " + Math.Round(inter, 2) + " MB\n";
         }
 
         private void resetToolStripMenuItem_Click(object sender, EventArgs e)
@@ -312,7 +295,7 @@ namespace RAM_Cleaner_2
                 mem_status.Invoke(new MethodInvoker(delegate { mem_status.Text = "Physical Memory: " + mem_phy_avail + "/" + mem_phy_total + " MB"; }));
             else
                 mem_status.Text = "Physical Memory: " + mem_phy_avail + "/" + mem_phy_total + " MB";
-            estimate(false);
+            estimate();
             if (mem_status_free.InvokeRequired)
                 mem_status_free.Invoke(new MethodInvoker(delegate { mem_status_free.Text = "Memory can be freed: " + Math.Round(mem_est / 1024 / 1024, 2) + " MB"; }));
             else
@@ -338,6 +321,8 @@ namespace RAM_Cleaner_2
                         progressBar1.BackColor = Color.FromArgb(0, 200, 0);
                     }
                 }));
+            if(listBox1.IsHandleCreated)
+                listBox1.Invoke((MethodInvoker)delegate { printHoggersEx(); });
         }
 
         private void updaterThreadFunction()
