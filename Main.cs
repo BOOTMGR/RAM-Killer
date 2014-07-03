@@ -271,7 +271,7 @@ namespace RAM_Cleaner_2
                 {
                     // if process can't be killed then substract amount memory which is not freed
                     mem_freed -= x;
-                    log_msgbox.Text += "\nError: " + ex + "\n\nAre you Administrator?\n";
+                    log_msgbox.Text += "\nError: " + ex.Message + "\n\nAre you Administrator?\n";
                     return;
                 }
             }
