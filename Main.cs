@@ -317,6 +317,27 @@ namespace RAM_Cleaner_2
                 mem_status_free.Invoke(new MethodInvoker(delegate { mem_status_free.Text = "Memory can be freed: " + Math.Round(mem_est / 1024 / 1024, 2) + " MB"; }));
             else
                 mem_status_free.Text = "Memory can be freed: " + Math.Round(mem_est / 1024 / 1024, 2) + " MB";
+            int mem_used_prcntg = 100 - ((100 * mem_phy_avail) / mem_phy_total);
+            if (progressBar1.InvokeRequired)
+                progressBar1.Invoke(new MethodInvoker(delegate
+                {
+                    progressBar1.Value = mem_used_prcntg;
+                    if (mem_used_prcntg >= 75)
+                    {
+                        progressBar1.ForeColor = Color.FromArgb(250, 0, 0);
+                        progressBar1.BackColor = Color.FromArgb(200, 0, 0);
+                    }
+                    else if (mem_used_prcntg >= 50)
+                    {
+                        progressBar1.ForeColor = Color.FromArgb(250, 250, 0);
+                        progressBar1.BackColor = Color.FromArgb(200, 200, 0);
+                    }
+                    else
+                    {
+                        progressBar1.ForeColor = Color.FromArgb(0, 250, 0);
+                        progressBar1.BackColor = Color.FromArgb(0, 200, 0);
+                    }
+                }));
         }
 
         private void updaterThreadFunction()

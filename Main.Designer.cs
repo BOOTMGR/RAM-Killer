@@ -1,4 +1,5 @@
-﻿namespace RAM_Cleaner_2
+﻿using System.Drawing;
+namespace RAM_Cleaner_2
 {
     partial class Main
     {
@@ -48,6 +49,8 @@
             this.mem_status = new System.Windows.Forms.Label();
             this.mem_status_free = new System.Windows.Forms.Label();
             this.but_top_hoggers = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.progressBar1 = new RAM_Cleaner_2.ProgressBarEx();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,32 +74,32 @@
             this.toolStripSeparator1,
             this.quitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(35, 20);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "&File";
             // 
             // saveLogToolStripMenuItem
             // 
             this.saveLogToolStripMenuItem.Name = "saveLogToolStripMenuItem";
-            this.saveLogToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.saveLogToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.saveLogToolStripMenuItem.Text = "&Save Log";
             this.saveLogToolStripMenuItem.Click += new System.EventHandler(this.saveLogToolStripMenuItem_Click);
             // 
             // clearLogToolStripMenuItem
             // 
             this.clearLogToolStripMenuItem.Name = "clearLogToolStripMenuItem";
-            this.clearLogToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.clearLogToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.clearLogToolStripMenuItem.Text = "&Clear Log";
             this.clearLogToolStripMenuItem.Click += new System.EventHandler(this.clearLogToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(116, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(121, 6);
             // 
             // quitToolStripMenuItem
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.quitToolStripMenuItem.Text = "&Quit";
             this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
             // 
@@ -105,7 +108,7 @@
             this.advancedToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.resetToolStripMenuItem});
             this.advancedToolStripMenuItem.Name = "advancedToolStripMenuItem";
-            this.advancedToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.advancedToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
             this.advancedToolStripMenuItem.Text = "&Advanced";
             // 
             // resetToolStripMenuItem
@@ -120,13 +123,13 @@
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "&Help";
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "&About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -163,7 +166,7 @@
             // 
             this.but_log_clean.Location = new System.Drawing.Point(404, 313);
             this.but_log_clean.Name = "but_log_clean";
-            this.but_log_clean.Size = new System.Drawing.Size(75, 42);
+            this.but_log_clean.Size = new System.Drawing.Size(75, 28);
             this.but_log_clean.TabIndex = 4;
             this.but_log_clean.Text = "Clear Log";
             this.but_log_clean.UseVisualStyleBackColor = true;
@@ -207,11 +210,31 @@
             this.but_top_hoggers.UseVisualStyleBackColor = true;
             this.but_top_hoggers.Click += new System.EventHandler(this.but_top_hoggers_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(221, 349);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(75, 13);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Memory Used:";
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.progressBar1.Location = new System.Drawing.Point(302, 347);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(177, 18);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressBar1.TabIndex = 9;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(491, 411);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.but_top_hoggers);
             this.Controls.Add(this.mem_status_free);
             this.Controls.Add(this.mem_status);
@@ -256,6 +279,8 @@
         private System.Windows.Forms.Label mem_status;
         private System.Windows.Forms.Label mem_status_free;
         private System.Windows.Forms.Button but_top_hoggers;
+        private ProgressBarEx progressBar1;
+        private System.Windows.Forms.Label label2;
     }
 }
 
