@@ -126,6 +126,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="TopHoggers.resx">
       <DependentUpon>TopHoggers.cs</DependentUpon>
@@ -149,6 +150,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="free_ram.ico" />
+    <None Include="Resources\avatar.bmp" />
+    <Content Include="Resources\avatar.jpeg" />
+    <None Include="Resources\free_ram.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
