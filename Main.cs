@@ -294,7 +294,7 @@ namespace RAM_Cleaner_2
             if (mem_status.InvokeRequired)
                 mem_status.Invoke(new MethodInvoker(delegate { mem_status.Text = "Physical Memory: " + mem_phy_avail + "/" + mem_phy_total + " MB"; }));
             else
-                mem_status.Text = "Physical Memory: " + mem_phy_avail + "/" + mem_phy_total + " MB";
+                mem_status.Text = "Physical Memory: " + (mem_phy_total - mem_phy_avail) + "/" + mem_phy_total + " MB";
             estimate();
             if (mem_status_free.InvokeRequired)
                 mem_status_free.Invoke(new MethodInvoker(delegate { mem_status_free.Text = "Memory can be freed: " + Math.Round(mem_est / 1024 / 1024, 2) + " MB"; }));
