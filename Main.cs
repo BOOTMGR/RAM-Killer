@@ -8,7 +8,6 @@ using System.Linq;
 using System.Security.Principal;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RAM_Cleaner_2
